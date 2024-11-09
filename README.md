@@ -17,11 +17,11 @@ Current status of different features:
 | Feature              | Status      | Notes                               |
 |---------------------|-------------|-------------------------------------|
 | Project Setup       | ✅ Complete | Basic project structure implemented |
-| Landing Page        | 🟡 Partial  | Basic layout done, needs styling    |
-| Authentication      | 🔴 Pending  | Firebase integration planned        |
-| Course Dashboard    | 🔴 Pending  | To be implemented                   |
+| Landing Page        | 🟡 Partial  | Basic layout and styling done, needs responsiveness    |
+| Authentication      | 🟡 Partial   | Firebase integration planned        |
+| Course Dashboard    | 🟡 Partial  | Desktop layout done                  |
 | Responsive Design   | 🟡 Partial  | Desktop layout done                 |
-| State Management    | ✅ Complete | Recoil setup done                  |
+| State Management    | 🟡 Partial  | Recoil setup done                  |
 
 Status Legend:
 - ✅ Complete: Feature is fully implemented and tested
