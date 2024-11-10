@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import Buttons from '../components/Buttons';
+import Buttons from '../components/common/Buttons';
 
 
 export default function Signup () {

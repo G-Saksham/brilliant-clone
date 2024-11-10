@@ -1,7 +1,7 @@
-import Navbar from "../components/Navbar"
-import Buttons from "../components/Buttons"
-import Cards from "../components/Cards"
-import SearchBar from "../components/SearchBar"
+import Navbar from "../components/nav/Navbar"
+import Buttons from "../components/common/Buttons"
+import Cards from "../components/course/Cards"
+import SearchBar from "../components/common/SearchBar"
 
 export default function CourseCatalog () {
     return (

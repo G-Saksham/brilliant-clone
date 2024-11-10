@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-// import Buttons from "./Buttons";
 
 const Navbar = () => {
     return (

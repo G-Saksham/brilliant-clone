@@ -1,10 +1,16 @@
-import { atom } from "recoil";
-import { User } from "firebase/auth";
+import { atom } from 'recoil';
+import { AuthState } from '../../types/auth';
 
-export const authUserState = atom<User | null>({
-  key: "authUserState",
-  default: null,
+export const authState = atom<AuthState>({
+  key: 'authState',
+  default: {
+    user: null,
+    loading: true,
+    error: null,
+  },
 });
+
+// email validation
 
 export const emailState = atom<string>({
   key: 'emailState', // unique ID for this atom

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import LandingNavbar from "../components/LandingNavbar";
+import LandingNavbar from "../components/nav/LandingNavbar";
 
 export default function LandingLayout (children: ReactNode) {
     return (

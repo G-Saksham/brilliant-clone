@@ -1,14 +1,14 @@
-import Navbar from "../components/Navbar"
-import Cards from "../components/Cards"
-import ContinueCard from "../components/ContinueCard"
-import ProgressCard from "../components/ProgressCard"
-import GoalCard from "../components/GoalCard"
+import Navbar from "../components/nav/Navbar"
+import Cards from "../components/course/Cards"
+import ContinueCard from "../components/course/ContinueCard"
+import ProgressCard from "../components/course/ProgressCard"
+import GoalCard from "../components/course/GoalCard"
 
 export default function Dashboard () {
     return (
         <div className=" overflow-y-hidden">
             <div className="fixed left-0 top-0 right-0 z-10">
-                <Navbar />
+                <Navbar /> 
             </div>
         
             <div className="grid flex-grow grid-cols-5 w-screen h-screen my-24 overflow-y-hidden px-40">
