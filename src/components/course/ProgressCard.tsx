@@ -1,7 +1,7 @@
 export default function ProgressCard () {
     return (
-        <div className="border-2 rounded-2xl border-gray-200 p-8">
-            <div className="">
+        <div className="border-2 rounded-3xl border-gray-200 p-8">
+            <div className="items-stretch">
                 <div className="flex justify-between">
                     <div className="flex">
                         <div className="flex text-5xl font-bold">1</div>
@@ -21,12 +21,8 @@ export default function ProgressCard () {
                     </div>
                 </div>
 
-                <div className="text-start flex gap-1 pt-2 text-sm font-medium">
-                    <span>Space</span>
-                    <p className="font-semibold">
-                        3 problems
-                    </p>
-                    <span>to continue your streak</span>
+                <div className="text-start inline-flex justify-start gap-1 pt-2 text-sm font-normal">
+                    <p>Space </p><p className="font-semibold">3 problems </p><p>to continue your streak</p>
                 </div>
 
                 {/* Days section */}

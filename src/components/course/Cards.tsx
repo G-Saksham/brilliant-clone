@@ -5,10 +5,9 @@ type cardProps = {
     label2?: string,
     logo?: string,
     className?: string
-    size?: string
 }
 
-export default function Cards ({type, label1, label2, logo, className, size}: cardProps) {
+export default function Cards ({type, label1, label2, logo, className}: cardProps) {
     return (
         <div className="border-2 rounded-3xl border-b-4 border-gray-200 relative hover:border-gray-400">
             <div className="flex justify-end p-2 text-right absolute right-0 top-0 ">

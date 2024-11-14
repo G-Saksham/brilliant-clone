@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Buttons from '../components/common/Buttons';
-import GoogleIconSvg from '../assets/svgs/googleIcon.svg?react'
-import FacebookIconSvg from '../assets/svgs/facebookIcon.svg?react'
-import SignupIconSvg from '../assets/svgs/signup.svg?react'
+import GoogleIconSvg from '../assets/svgs/googleIcon.svg?react';
+import FacebookIconSvg from '../assets/svgs/facebookIcon.svg?react';
+import SignupIconSvg from '../assets/svgs/signup.svg?react';
 
-export default function Signup () {
+export default function Signup() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -16,72 +16,75 @@ export default function Signup () {
     const [error, setError] = useState('');
     const [showEmailTooltip, setShowEmailTooltip] = useState(false);
     const [showAgeTooltip, setShowAgeTooltip] = useState(false);
+    const [showAdditionalFields, setShowAdditionalFields] = useState(false);
 
-    // Ref to hold the email tooltip element
-    const emailTooltipRef = useRef(null);
+    const emailTooltipRef = useRef<HTMLDivElement>(null);
+    const ageTooltipRef = useRef<HTMLDivElement>(null);
 
-    // Ref to hold the age tooltip element
-    const ageTooltipRef = useRef(null);
-
-  
-    // Validate email
     const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-    const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Basic validation
-    if (!isValidEmail(email)) {
-      setError('Please enter a valid email address');
-      return;
-    }
+    const handleEmailSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        
+        if (!isValidEmail(email)) {
+            setError('Please enter a valid email address');
+            return;
+        }
 
-    if (!password || password.length < 6) {
-      setError('Password must be at least 6 characters');
-      return;
-    }
+        setError('');
+        setShowAdditionalFields(true);
+    };
 
-    if (!firstName || !lastName || !age) {
-      setError('Please fill in all the fields');
-      return;
-    }
+    const handleFullSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
 
-    // Proceed with sign-up logic (e.g., call Firebase API or custom handler)
-    console.log('Form submitted with:', { email, password, firstName, lastName, age });
-    setError(''); // Clear error message
-    // Redirect to another page after successful form submission, e.g., a welcome page
-    navigate('/dashboard');
-    }
+        if (!isValidEmail(email)) {
+            setError('Please enter a valid email address');
+            return;
+        }
 
-    // State capture
+        if (!password || password.length < 6) {
+            setError('Password must be at least 6 characters');
+            return;
+        }
+
+        if (!firstName || !lastName || !age) {
+            setError('Please fill in all the fields');
+            return;
+        }
+
+        console.log('Form submitted with:', { email, password, firstName, lastName, age });
+        setError('');
+        navigate('/dashboard');
+    };
+
     const toggleEmailTooltip = () => {
         setShowEmailTooltip((prevState) => !prevState);
     };
-      
+
     const toggleAgeTooltip = () => {
         setShowAgeTooltip((prevState) => !prevState);
     };
 
-    // Close the tooltip when clicking outside
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-        if (
-            emailTooltipRef.current &&
-            !emailTooltipRef.current.contains(event.target as Node) &&
-            ageTooltipRef.current &&
-            !ageTooltipRef.current.contains(event.target as Node)
-        ) {
-            setShowEmailTooltip(false);
-            setShowAgeTooltip(false);
-        }
+            const emailTooltipElement = emailTooltipRef.current;
+            const ageTooltipElement = ageTooltipRef.current;
+
+            if (
+                emailTooltipElement &&
+                !emailTooltipElement.contains(event.target as Node) &&
+                ageTooltipElement &&
+                !ageTooltipElement.contains(event.target as Node)
+            ) {
+                setShowEmailTooltip(false);
+                setShowAgeTooltip(false);
+            }
         };
 
-        // Add event listener when the component mounts
         document.addEventListener('mousedown', handleClickOutside);
-
-        // Remove event listener when the component unmounts
         return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
 
@@ -91,7 +94,6 @@ export default function Signup () {
                 <SignupIconSvg className='w-96 self-center'/>
             </div>
 
-            {/* signup section */}
             <div className='col-span-1 self-center w-full grid justify-center lg:justify-start'>
                 <div className='flex justify-center text-center text-2xl font-bold my-6'>
                     Create a free account to 
@@ -100,15 +102,15 @@ export default function Signup () {
                     <br />
                     learning path
                 </div>
-                <div className='flex justify-between gap-4 my-2'>
+                <div className='flex justify-between gap-4 my-2 w-full'>
                     <div className='w-1/2'>
                         <Buttons btnType="type2" color='white' className='w-full'>
-                            <GoogleIconSvg/>
+                            <GoogleIconSvg className='w-5 py-0'/>
                         </Buttons>
                     </div>
                     <div className='w-1/2'>
                         <Buttons btnType='type2' color='white' className='w-full'>
-                            <FacebookIconSvg/>
+                            <FacebookIconSvg className='w-5'/>
                         </Buttons>
                     </div>
                 </div>
@@ -116,7 +118,7 @@ export default function Signup () {
                     Or
                 </div>
                 <div className='my-4'>
-                    <form onSubmit={handleSubmit} className="space-y-4">
+                    <form onSubmit={showAdditionalFields ? handleFullSubmit : handleEmailSubmit} className="space-y-4">
                         <div className="relative">
                             <input
                                 type="email"
@@ -125,6 +127,7 @@ export default function Signup () {
                                 onChange={(e) => setEmail(e.target.value)}
                                 className="w-full p-2 border border-gray-300 rounded-md"
                                 required
+                                disabled={showAdditionalFields}
                             />
                             <div className="absolute top-1/2 -right-8 transform -translate-y-1/2">
                                 <div
@@ -141,92 +144,100 @@ export default function Signup () {
                                                 Notifications about comments and other activity, new problems and the very occasional newsletter from the staff at Brilliant; you may unsubscribe at any point.
                                             </p>
                                         </div>
-                                        
-                                    )}
-                                </div>
-                            </div>
-                            {error && !isValidEmail(email) && (
-                                <p className="text-red-500 text-sm">{error}</p>
-                            )}
-                        </div>
-
-                        <div>
-                            <input
-                                type="password"
-                                placeholder="Password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                className="w-full p-2 border border-gray-300 rounded-md"
-                                required
-                            />
-                        </div>
-
-                        <div className="flex space-x-0">
-                            <div className="w-1/2">
-                                <input
-                                    type="text"
-                                    placeholder="First Name"
-                                    value={firstName}
-                                    onChange={(e) => setFirstName(e.target.value)}
-                                    className="w-full p-2 border border-gray-300 rounded-l-md"
-                                    required
-                                />
-                            </div>
-                            <div className="w-1/2">
-                                <input
-                                    type="text"
-                                    placeholder="Last Name"
-                                    value={lastName}
-                                    onChange={(e) => setLastName(e.target.value)}
-                                    className="w-full p-2 border border-gray-300 rounded-r-md"
-                                    required
-                                />
-                            </div>
-                        </div>
-
-                        <div className="relative">
-                            <input
-                                type="number"
-                                placeholder="Age"
-                                value={age}
-                                onChange={(e) => setAge(e.target.value)}
-                                className="w-full p-2 border border-gray-300 rounded-md"
-                                required
-                            />
-                            <div className="absolute top-1/2 -right-8 transform -translate-y-1/2">
-                                <div
-                                    className="w-5 h-5 flex items-center justify-center bg-gray-200 rounded-full cursor-pointer"
-                                    onClick={toggleAgeTooltip}
-                                >
-                                    <span className="text-gray-500 text-sm">?</span>
-                                    {showAgeTooltip && (
-                                        <p className='grid grid-flow-row absolute z-10 bg-white text-black p-4 rounded-md border w-48 text-xs font-normal left-8 top-1/2 -translate-y-1/3 info-tooltip gap-4'>
-                                            Filling in your age lets us customize the problem solving experience for you (and stay in compliance with local regulations). For more detail, check out the privacy policy.
-                                        </p>
                                     )}
                                 </div>
                             </div>
                         </div>
 
-                        {/* Error message */}
+                        {!showAdditionalFields && (
+                            <div className='my-4'>
+                                <Buttons btnType="type2" color='allBlack' className='w-full'>
+                                    Continue
+                                </Buttons>
+                            </div>
+                        )}
+
+                        {showAdditionalFields && (
+                            <>
+                                <div>
+                                    <input
+                                        type="password"
+                                        placeholder="Password"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        className="w-full p-2 border border-gray-300 rounded-md"
+                                        required
+                                    />
+                                </div>
+
+                                <div className="flex space-x-0">
+                                    <div className="w-1/2">
+                                        <input
+                                            type="text"
+                                            placeholder="First Name"
+                                            value={firstName}
+                                            onChange={(e) => setFirstName(e.target.value)}
+                                            className="w-full p-2 border border-gray-300 rounded-l-md"
+                                            required
+                                        />
+                                    </div>
+                                    <div className="w-1/2">
+                                        <input
+                                            type="text"
+                                            placeholder="Last Name"
+                                            value={lastName}
+                                            onChange={(e) => setLastName(e.target.value)}
+                                            className="w-full p-2 border border-gray-300 rounded-r-md"
+                                            required
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="relative">
+                                    <input
+                                        type="number"
+                                        placeholder="Age"
+                                        value={age}
+                                        onChange={(e) => setAge(e.target.value)}
+                                        className="w-full p-2 border border-gray-300 rounded-md"
+                                        min="1"
+                                        required
+                                    />
+                                    <div className="absolute top-1/2 -right-8 transform -translate-y-1/2">
+                                        <div
+                                            className="w-5 h-5 flex items-center justify-center bg-gray-200 rounded-full cursor-pointer"
+                                            onClick={toggleAgeTooltip}
+                                        >
+                                            <span className="text-gray-500 text-sm">?</span>
+                                            {showAgeTooltip && (
+                                                <p className='grid grid-flow-row absolute z-10 bg-white text-black p-4 rounded-md border w-48 text-xs font-normal -left-8 -top-1/2 lg:left-8 lg:top-1/2 -translate-y-1/3 info-tooltip gap-4'>
+                                                    Filling in your age lets us customize the problem solving experience for you (and stay in compliance with local regulations). For more detail, check out the privacy policy.
+                                                </p>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className='my-4'>
+                                    <Buttons btnType="type2" color='allBlack' className='w-full'
+                                        onClick={() => {
+                                            navigate('/home')
+                                        }}
+                                    >
+                                        Sign Up
+                                    </Buttons>
+                                </div>
+                            </>
+                        )}
+
                         {error && <p className="text-red-500 text-sm">{error}</p>}
 
-                        {/* CHANGE TO OTHER CUSTOM BUTTON ---- Sign up button */}
-                        <div className='my-4'>
-                            <Buttons btnType="type2" color='allBlack' className='w-full' onClick={ () => {
-                                navigate('/home')
-                            }
-                            }>Sign Up</Buttons>
-                        </div>
-
-                        {/* Policy warning */}
                         <div className="flex flex-row text-xs justify-center text-gray-500">
-                            <p className=" text-center">
+                            <p className="text-center">
                                 By clicking up, I agree to Brillian's <span className="underline">Terms</span> and <span className="underline">Privacy Policy</span>
                             </p>
                         </div>
 
-                        {/* Sign In link */}
                         <div className="text-center pt-2">
                             <p className="text-md">
                                 Existing User?{' '}
@@ -237,5 +248,5 @@ export default function Signup () {
                 </div>
             </div>
         </div>
-    )
+    );
 }
