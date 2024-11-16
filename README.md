@@ -20,7 +20,7 @@ Current status of different features:
 | Landing Page        | ✅ Complete  | Basic layout and styling done, needs responsiveness    |
 | Authentication      | 🟡 Partial   | Firebase integration planned        |
 | Course Dashboard    | ✅ Complete  | Desktop layout done                  |
-| Responsive Design   | 🟡 ✅ Complete  | Desktop layout done                 |
+| Responsive Design   | ✅ Complete  | Desktop layout done                 |
 | State Management    | 🟡 Partial  | Recoil setup done                  |
 
 Status Legend:
