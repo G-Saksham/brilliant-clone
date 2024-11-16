@@ -17,10 +17,10 @@ Current status of different features:
 | Feature              | Status      | Notes                               |
 |---------------------|-------------|-------------------------------------|
 | Project Setup       | ✅ Complete | Basic project structure implemented |
-| Landing Page        | 🟡 Partial  | Basic layout and styling done, needs responsiveness    |
+| Landing Page        | ✅ Complete  | Basic layout and styling done, needs responsiveness    |
 | Authentication      | 🟡 Partial   | Firebase integration planned        |
-| Course Dashboard    | 🟡 Partial  | Desktop layout done                  |
-| Responsive Design   | 🟡 Partial  | Desktop layout done                 |
+| Course Dashboard    | ✅ Complete  | Desktop layout done                  |
+| Responsive Design   | 🟡 ✅ Complete  | Desktop layout done                 |
 | State Management    | 🟡 Partial  | Recoil setup done                  |
 
 Status Legend:
