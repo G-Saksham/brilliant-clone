@@ -1,122 +1,51 @@
+import ProgressIconSvg from '../../assets/svgs/progressIcon.svg?react'
+import BatteryIconSvg from '../../assets/svgs/batteryIcon.svg?react'
+import CurrentBoldProgressIconSvg from '../../assets/svgs/currentBoldProgressIcon.svg?react'
+import CurrentProgressIconSvg from '../../assets/svgs/currentProgressIcon.svg?react'
+
 export default function ProgressCard () {
     return (
-        <div className="border-2 rounded-3xl border-gray-200 p-8">
-            <div className="items-stretch">
-                <div className="flex justify-between">
-                    <div className="flex">
-                        <div className="flex text-5xl font-bold">1</div>
-                        <div className="w-8 pt-2">
-                            <svg viewBox="0 0 32 32" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                                <path fill='white' d="M22.676 11.3021H16.9944L19.1005 4.98646C19.2964 4.20312 18.7087 3.46875 17.974 3.46875H10.9209C10.3331 3.46875 9.79435 3.90937 9.74537 4.49687L8.17802 16.2469C8.08006 16.9812 8.61883 17.5687 9.35353 17.5687H15.1331L12.8801 27.1156C12.7331 27.85 13.2719 28.5354 14.0066 28.5354C14.4474 28.5354 14.8393 28.3396 15.0352 27.9479L23.6556 13.0646C24.1454 12.3302 23.5577 11.3021 22.676 11.3021Z" stroke="black" stroke-opacity="0.1" stroke-width="2"></path>
-                            </svg>
+        <div className="border-2 rounded-3xl border-gray-200 p-4 sm:p-6 md:p-8">
+            <div className="space-y-4">
+                <div className="flex justify-between items-center">
+                    <div className="flex items-center space-x-2">
+                        <div className="text-3xl sm:text-4xl md:text-5xl font-bold">1</div>
+                        <div className="w-6 sm:w-8 pt-1">
+                            <ProgressIconSvg/>
                         </div>
                     </div>
-                    <div className="flex gap-4 w-12">
-                        <svg viewBox="0 0 14 24" focusable="false">
-                            <mask id=":rs:" fill="white">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4.18901 1.70986e-07C3.91851 1.59161e-07 3.69922 0.219288 3.69922 0.489794L3.69922 3.42969L0.767138 3.42969C0.496632 3.42969 0.277344 3.64898 0.277344 3.91948L0.277343 23.5113C0.277343 23.7818 0.496631 24.0011 0.767137 24.0011L13.5017 24.0011C13.7723 24.0011 13.9915 23.7818 13.9915 23.5113L13.9915 3.91948C13.9915 3.64898 13.7723 3.42969 13.5017 3.42969L10.5563 3.42969L10.5563 0.489795C10.5563 0.219289 10.337 4.39726e-07 10.0665 4.27902e-07L4.18901 1.70986e-07Z"></path></mask>
-                            <path d="M4.18901 1.70986e-07L4.18901 -2L4.18901 1.70986e-07ZM3.69922 3.42969L3.69922 5.42969L5.69922 5.42969L5.69922 3.42969L3.69922 3.42969ZM0.767137 24.0011L0.767137 22.0011L0.767137 24.0011ZM13.5017 24.0011L13.5017 26.0011L13.5017 24.0011ZM13.5017 3.42969L13.5017 5.42969L13.5017 3.42969ZM10.5563 3.42969L8.55632 3.42969L8.55632 5.42969L10.5563 5.42969L10.5563 3.42969ZM10.0665 4.27902e-07L10.0665 2L10.0665 4.27902e-07ZM5.69922 0.489794C5.69922 1.32386 5.02308 2 4.18901 2L4.18901 -2C2.81394 -2 1.69922 -0.885283 1.69922 0.489794L5.69922 0.489794ZM5.69922 3.42969L5.69922 0.489794L1.69922 0.489794L1.69922 3.42969L5.69922 3.42969ZM0.767138 5.42969L3.69922 5.42969L3.69922 1.42969L0.767138 1.42969L0.767138 5.42969ZM2.27734 3.91948C2.27734 4.75355 1.6012 5.42969 0.767138 5.42969L0.767138 1.42969C-0.607932 1.42969 -1.72266 2.5444 -1.72266 3.91948L2.27734 3.91948ZM2.27734 23.5113L2.27734 3.91948L-1.72266 3.91948L-1.72266 23.5113L2.27734 23.5113ZM0.767137 22.0011C1.6012 22.0011 2.27734 22.6772 2.27734 23.5113L-1.72266 23.5113C-1.72266 24.8864 -0.607935 26.0011 0.767137 26.0011L0.767137 22.0011ZM13.5017 22.0011L0.767137 22.0011L0.767137 26.0011L13.5017 26.0011L13.5017 22.0011ZM11.9915 23.5113C11.9915 22.6773 12.6677 22.0011 13.5017 22.0011L13.5017 26.0011C14.8768 26.0011 15.9915 24.8864 15.9915 23.5113L11.9915 23.5113ZM11.9915 3.91948L11.9915 23.5113L15.9915 23.5113L15.9915 3.91948L11.9915 3.91948ZM13.5017 5.42969C12.6677 5.42969 11.9915 4.75354 11.9915 3.91948L15.9915 3.91948C15.9915 2.54441 14.8768 1.42969 13.5017 1.42969L13.5017 5.42969ZM10.5563 5.42969L13.5017 5.42969L13.5017 1.42969L10.5563 1.42969L10.5563 5.42969ZM8.55632 0.489795L8.55632 3.42969L12.5563 3.42969L12.5563 0.489795L8.55632 0.489795ZM10.0665 2C9.23246 2 8.55632 1.32386 8.55632 0.489795L12.5563 0.489795C12.5563 -0.885279 11.4416 -2 10.0665 -2L10.0665 2ZM4.18901 2L10.0665 2L10.0665 -2L4.18901 -2L4.18901 2Z" fill="black" fill-opacity="0.1" mask="url(#:rs:)"></path>
-                        </svg>
-                        <svg viewBox="0 0 14 24" focusable="false"><mask id=":rs:" fill="white"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.18901 1.70986e-07C3.91851 1.59161e-07 3.69922 0.219288 3.69922 0.489794L3.69922 3.42969L0.767138 3.42969C0.496632 3.42969 0.277344 3.64898 0.277344 3.91948L0.277343 23.5113C0.277343 23.7818 0.496631 24.0011 0.767137 24.0011L13.5017 24.0011C13.7723 24.0011 13.9915 23.7818 13.9915 23.5113L13.9915 3.91948C13.9915 3.64898 13.7723 3.42969 13.5017 3.42969L10.5563 3.42969L10.5563 0.489795C10.5563 0.219289 10.337 4.39726e-07 10.0665 4.27902e-07L4.18901 1.70986e-07Z"></path></mask><path d="M4.18901 1.70986e-07L4.18901 -2L4.18901 1.70986e-07ZM3.69922 3.42969L3.69922 5.42969L5.69922 5.42969L5.69922 3.42969L3.69922 3.42969ZM0.767137 24.0011L0.767137 22.0011L0.767137 24.0011ZM13.5017 24.0011L13.5017 26.0011L13.5017 24.0011ZM13.5017 3.42969L13.5017 5.42969L13.5017 3.42969ZM10.5563 3.42969L8.55632 3.42969L8.55632 5.42969L10.5563 5.42969L10.5563 3.42969ZM10.0665 4.27902e-07L10.0665 2L10.0665 4.27902e-07ZM5.69922 0.489794C5.69922 1.32386 5.02308 2 4.18901 2L4.18901 -2C2.81394 -2 1.69922 -0.885283 1.69922 0.489794L5.69922 0.489794ZM5.69922 3.42969L5.69922 0.489794L1.69922 0.489794L1.69922 3.42969L5.69922 3.42969ZM0.767138 5.42969L3.69922 5.42969L3.69922 1.42969L0.767138 1.42969L0.767138 5.42969ZM2.27734 3.91948C2.27734 4.75355 1.6012 5.42969 0.767138 5.42969L0.767138 1.42969C-0.607932 1.42969 -1.72266 2.5444 -1.72266 3.91948L2.27734 3.91948ZM2.27734 23.5113L2.27734 3.91948L-1.72266 3.91948L-1.72266 23.5113L2.27734 23.5113ZM0.767137 22.0011C1.6012 22.0011 2.27734 22.6772 2.27734 23.5113L-1.72266 23.5113C-1.72266 24.8864 -0.607935 26.0011 0.767137 26.0011L0.767137 22.0011ZM13.5017 22.0011L0.767137 22.0011L0.767137 26.0011L13.5017 26.0011L13.5017 22.0011ZM11.9915 23.5113C11.9915 22.6773 12.6677 22.0011 13.5017 22.0011L13.5017 26.0011C14.8768 26.0011 15.9915 24.8864 15.9915 23.5113L11.9915 23.5113ZM11.9915 3.91948L11.9915 23.5113L15.9915 23.5113L15.9915 3.91948L11.9915 3.91948ZM13.5017 5.42969C12.6677 5.42969 11.9915 4.75354 11.9915 3.91948L15.9915 3.91948C15.9915 2.54441 14.8768 1.42969 13.5017 1.42969L13.5017 5.42969ZM10.5563 5.42969L13.5017 5.42969L13.5017 1.42969L10.5563 1.42969L10.5563 5.42969ZM8.55632 0.489795L8.55632 3.42969L12.5563 3.42969L12.5563 0.489795L8.55632 0.489795ZM10.0665 2C9.23246 2 8.55632 1.32386 8.55632 0.489795L12.5563 0.489795C12.5563 -0.885279 11.4416 -2 10.0665 -2L10.0665 2ZM4.18901 2L10.0665 2L10.0665 -2L4.18901 -2L4.18901 2Z" fill="black" fill-opacity="0.1" mask="url(#:rs:)"></path></svg>
+                    <div className="flex space-x-2 sm:space-x-4">
+                        <BatteryIconSvg className="w-4"/>
+                        <BatteryIconSvg className="w-4"/>
                     </div>
                 </div>
-
-                <div className="text-start inline-flex justify-start gap-1 pt-2 text-sm font-normal">
-                    <p>Space </p><p className="font-semibold">3 problems </p><p>to continue your streak</p>
+                
+                {/* Text section - remains inline */}
+                <div className="flex flex-wrap items-center justify-start text-xs sm:text-sm space-x-1">
+                    <p>Space</p>
+                    <p className="font-semibold">3 problems</p>
+                    <p>to continue your streak</p>
                 </div>
-
+                
                 {/* Days section */}
-                <div className="py-4">
-                    <div className="flex justify-between ">
-                        <div className="grid justify-between gap-2">
-                            <div className="flex justify-center w-12">
-                                <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
-                                        {/* <!-- Outer Circle with Light Gray Border --> */}
-                                        <rect x="1" y="1" width="46" height="46" rx="23" stroke="#D3D3D3" stroke-width="2" fill="none"></rect>
-
-                                        {/* <!-- Lightning Bolt with Gray Fill --> */}
-                                        <path fill="#E5E5E5" fill-opacity="1" d="M31.6286 19.5H25.5087L27.7773 13.4531C27.9883 12.7031 27.3552 12 26.5639 12H18.9668C18.3337 12 17.7534 12.4219 17.7006 12.9844L16.0124 24.2344C15.9069 24.9375 16.4872 25.5 17.2786 25.5H23.504L21.0771 34.6406C20.9188 35.3438 21.4992 36 22.2905 36C22.7654 36 23.1874 35.8125 23.3984 35.4375L32.6838 21.1875C33.2113 20.4844 32.5782 19.5 31.6286 19.5Z"></path>
-
-                                        {/* <!-- Outer Circle with Darker Gray Border --> */}
-                                        <rect x="1" y="1" width="46" height="46" rx="23" stroke="#A9A9A9" stroke-width="2" fill="none"></rect>
-                                </svg>
+                <div>
+                    <div className="flex justify-between space-x-2">
+                        {[
+                            { icon: CurrentBoldProgressIconSvg, day: 'Th', active: true },
+                            { icon: CurrentProgressIconSvg, day: 'F', active: false },
+                            { icon: CurrentProgressIconSvg, day: 'S', active: false },
+                            { icon: CurrentProgressIconSvg, day: 'Su', active: false },
+                            { icon: CurrentProgressIconSvg, day: 'M', active: false }
+                        ].map(({ icon: Icon, day, active }) => (
+                            <div key={day} className="flex flex-col items-center space-y-2">
+                                <div className="flex justify-center w-8 sm:w-12">
+                                    <Icon />
+                                </div>
+                                <div className={`text-sm sm:text-lg ${active ? 'font-semibold' : 'font-normal text-gray-500'}`}>
+                                    {day}
+                                </div>
                             </div>
-                            <div className="flex justify-center text-lg font-semibold">
-                                Th
-                            </div>
-                        </div>
-
-                        <div className="grid justify-between gap-2">
-                            <div className="flex justify-center w-12">
-                                <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
-                                    {/* <!-- Outer Circle with Light Gray Border --> */}
-                                    <rect x="1" y="1" width="46" height="46" rx="23" stroke="" stroke-width="2" fill="none"></rect>
-
-                                    {/* <!-- Lightning Bolt with Gray Fill --> */}
-                                    <path fill="#D3D3D3" fill-opacity="1" d="M31.6286 19.5H25.5087L27.7773 13.4531C27.9883 12.7031 27.3552 12 26.5639 12H18.9668C18.3337 12 17.7534 12.4219 17.7006 12.9844L16.0124 24.2344C15.9069 24.9375 16.4872 25.5 17.2786 25.5H23.504L21.0771 34.6406C20.9188 35.3438 21.4992 36 22.2905 36C22.7654 36 23.1874 35.8125 23.3984 35.4375L32.6838 21.1875C33.2113 20.4844 32.5782 19.5 31.6286 19.5Z"></path>
-
-                                    {/* <!-- Outer Circle with Darker Gray Border --> */}
-                                    <rect x="1" y="1" width="46" height="46" rx="23" stroke="#E5E5E5" stroke-width="2" fill="none"></rect>
-                                </svg>
-                            </div>
-                            <div className="flex justify-center text-lg font-normal text-gray-500">
-                                F
-                            </div>
-                        </div>
-
-                        <div className="grid justify-between gap-2">
-                            <div className="flex justify-center w-12">
-                            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
-                                    {/* <!-- Outer Circle with Light Gray Border --> */}
-                                    <rect x="1" y="1" width="46" height="46" rx="23" stroke="" stroke-width="2" fill="none"></rect>
-
-                                    {/* <!-- Lightning Bolt with Gray Fill --> */}
-                                    <path fill="#D3D3D3" fill-opacity="1" d="M31.6286 19.5H25.5087L27.7773 13.4531C27.9883 12.7031 27.3552 12 26.5639 12H18.9668C18.3337 12 17.7534 12.4219 17.7006 12.9844L16.0124 24.2344C15.9069 24.9375 16.4872 25.5 17.2786 25.5H23.504L21.0771 34.6406C20.9188 35.3438 21.4992 36 22.2905 36C22.7654 36 23.1874 35.8125 23.3984 35.4375L32.6838 21.1875C33.2113 20.4844 32.5782 19.5 31.6286 19.5Z"></path>
-
-                                    {/* <!-- Outer Circle with Darker Gray Border --> */}
-                                    <rect x="1" y="1" width="46" height="46" rx="23" stroke="#E5E5E5" stroke-width="2" fill="none"></rect>
-                                </svg>
-                            </div>
-                            <div className="flex justify-center text-lg font-normal text-gray-500">
-                                S
-                            </div>
-                        </div>
-
-                        <div className="grid justify-between gap-2">
-                            <div className="flex justify-center w-12">
-                                <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
-                                    {/* <!-- Outer Circle with Light Gray Border --> */}
-                                    <rect x="1" y="1" width="46" height="46" rx="23" stroke="" stroke-width="2" fill="none"></rect>
-
-                                    {/* <!-- Lightning Bolt with Gray Fill --> */}
-                                    <path fill="#D3D3D3" fill-opacity="1" d="M31.6286 19.5H25.5087L27.7773 13.4531C27.9883 12.7031 27.3552 12 26.5639 12H18.9668C18.3337 12 17.7534 12.4219 17.7006 12.9844L16.0124 24.2344C15.9069 24.9375 16.4872 25.5 17.2786 25.5H23.504L21.0771 34.6406C20.9188 35.3438 21.4992 36 22.2905 36C22.7654 36 23.1874 35.8125 23.3984 35.4375L32.6838 21.1875C33.2113 20.4844 32.5782 19.5 31.6286 19.5Z"></path>
-
-                                    {/* <!-- Outer Circle with Darker Gray Border --> */}
-                                    <rect x="1" y="1" width="46" height="46" rx="23" stroke="#E5E5E5" stroke-width="2" fill="none"></rect>
-                                </svg>
-                            </div>
-                            <div className="flex justify-center text-lg font-normal text-gray-500">
-                                Su
-                            </div>
-                        </div>
-
-                        <div className="grid justify-between gap-2">
-                            <div className="flex justify-center w-12">
-                                <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
-                                    {/* <!-- Outer Circle with Light Gray Border --> */}
-                                    <rect x="1" y="1" width="46" height="46" rx="23" stroke="" stroke-width="2" fill="none"></rect>
-
-                                    {/* <!-- Lightning Bolt with Gray Fill --> */}
-                                    <path fill="#D3D3D3" fill-opacity="1" d="M31.6286 19.5H25.5087L27.7773 13.4531C27.9883 12.7031 27.3552 12 26.5639 12H18.9668C18.3337 12 17.7534 12.4219 17.7006 12.9844L16.0124 24.2344C15.9069 24.9375 16.4872 25.5 17.2786 25.5H23.504L21.0771 34.6406C20.9188 35.3438 21.4992 36 22.2905 36C22.7654 36 23.1874 35.8125 23.3984 35.4375L32.6838 21.1875C33.2113 20.4844 32.5782 19.5 31.6286 19.5Z"></path>
-
-                                    {/* <!-- Outer Circle with Darker Gray Border --> */}
-                                    <rect x="1" y="1" width="46" height="46" rx="23" stroke="#E5E5E5" stroke-width="2" fill="none"></rect>
-                                </svg>
-                            </div>
-                            <div className="flex justify-center text-lg font-normal text-gray-500">
-                                M
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>

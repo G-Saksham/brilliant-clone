@@ -73,7 +73,7 @@ src/
 ## Features Implemented
 
 - Basic project structure and routing
-- Landing page layout (desktop version)
+- Landing Page, Signup Page, Dashboard Page and Course Page.
 - Recoil state management setup
 - Component architecture foundation
 
@@ -81,13 +81,11 @@ src/
 
 - Firebase authentication integration
 - Responsive design implementation
-- Course dashboard development
 - Loading and error states
 
 ## Known Limitations
 
 - Authentication not yet implemented
-- Mobile responsiveness in progress
 - Course data currently using dummy content
 
 ## Local Development
@@ -97,7 +95,5 @@ The project runs on `http://localhost:5173` by default when started with `npm ru
 ## Future Improvements
 
 - Complete Firebase authentication integration
-- Implement responsive design for all screen sizes
 - Add loading and error states
-- Complete course dashboard implementation
-- Add animations and transitions
+- Add animations and transitions (optional)
